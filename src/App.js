@@ -1,13 +1,12 @@
-import React from 'react'
+import React from "react"
 // import * as BooksAPI from './BooksAPI'
-import './App.css'
-import CurrentlyReading from './CurrentlyReading';
-import WantToRead from './WantToRead';
-import Read from './Read';
-import SearchBooks from './SearchBooks';
+import "./App.css"
+import CurrentlyReading from "./CurrentlyReading"
+import WantToRead from "./WantToRead"
+import Read from "./Read"
+import ListBooks from "./ListBooks"
 
 class BooksApp extends React.Component {
- 
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -19,12 +18,15 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+          <a
+            className="close-search"
+            onClick={() => this.setState({ showSearchPage: false })}
+          >
+            Close
+          </a>
         ) : (
           <div className="list-books">
             <div className="list-books-title">
@@ -32,17 +34,22 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-              <SearchBooks />
                 <CurrentlyReading />
                 <WantToRead />
                 <Read />
+                <ListBooks />
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+            
+              <a onClick={() => this.setState({ showSearchPage: true })}>
+                Add a book
+              </a>
             </div>
+            
           </div>
         )}
+       
       </div>
     )
   }
