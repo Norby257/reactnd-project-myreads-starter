@@ -1,6 +1,7 @@
 import React from "react"
 // import * as BooksAPI from './BooksAPI'
 import "./App.css"
+import {Route, Link} from 'react-router-dom';
 import CurrentlyReading from "./CurrentlyReading"
 import WantToRead from "./WantToRead"
 import Read from "./Read"
@@ -14,7 +15,10 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    // showSearchPage: false
+    //  TODO: instead of SET STATE - use ROUTE and then Link to should work with the button (to go back?)
+    //  to '/' and then plus sign icon should route to '/search' 
+    //  TODO: navigate back to home page with back button?
   }
 
   render() {
@@ -37,14 +41,21 @@ class BooksApp extends React.Component {
                 <CurrentlyReading />
                 <WantToRead />
                 <Read />
+              <Route exact path='/search' render={() => (
                 <ListBooks />
+              )}
+              />
               </div>
             </div>
             <div className="open-search">
             
-              <a onClick={() => this.setState({ showSearchPage: true })}>
+              <Link
+              to= '/search'>
                 Add a book
-              </a>
+                
+                </Link>
+              
+              
             </div>
             
           </div>
