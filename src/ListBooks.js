@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import { strictEqual } from 'assert';
-
+import {Link} from 'react-router-dom'
 //  TODO: code this so that UI updates based on what is in the input field
 
 
@@ -59,7 +59,7 @@ state = {
    return (
     <div>
     <div className="search-books">
-    {JSON.stringify(this.state)}
+    {/* {JSON.stringify(this.state)} */}
     <div className="search-books-bar">
     <div className="search-books-input-wrapper">
         {/*

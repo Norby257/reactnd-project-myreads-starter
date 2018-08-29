@@ -2,10 +2,27 @@ import React from 'react';
 
 //  this takes props bc it is child component 
 function CurrentlyReading(props) {
+  console.log('Props', props);
     return (
         <div>
             <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
+                 <ol className='book-list'>
+                 {props.books.map((book)=> (
+                   <li key ={book.id}>
+                   {book.title}
+                   {book.author}
+                   <div
+                   className='contact-avatar'
+                   style={{
+                     backgroundImage: `url(${book.backgroundImage})`
+                   }}
+                   ></div>
+                   
+                  </li>
+                  
+                 ))}
+                 </ol>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       <li>
