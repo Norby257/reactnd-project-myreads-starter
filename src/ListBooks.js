@@ -58,6 +58,16 @@ state = {
   
    return (
     <div>
+      {/* <a
+            className="close-search"
+          >
+            Close
+          </a> */}
+          <Link to="/"
+            className="close-search"
+          >
+            Close
+          </Link>
     <div className="search-books">
     {JSON.stringify(this.state)}
     <div className="search-books-bar">
@@ -81,6 +91,7 @@ state = {
   <div className="list-books">
 
 </div>
+
 </div>
 
    )

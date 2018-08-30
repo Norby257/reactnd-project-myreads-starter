@@ -34,22 +34,17 @@ class BooksApp extends React.Component {
     })
 
   }
-  removeBook = (book) => {
-    this.setState((currentState)=> ({
-      books: currentState.book.filter((b) => {
-        return b.id !== book.id
 
-      })
-
-    }))
-
-  }
   //  move book to a different shelf 
-  moveBook = (book) => {
-    this.setState({selectOptionValue: book.target.value
+  // moveBook = (book) => {
+  //   this.setState({selectOptionValue: book.target.value
 
-    })
-  }
+  //   })
+  // }
+
+  //   so this is after setState 
+
+  // BooksAPI.update(book);
 
   render() {
     return (
@@ -67,10 +62,17 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                
-                <CurrentlyReading books = {this.state.books}  />
-                <WantToRead books = {this.state.books} />
-                <Read books = {this.state.books} />
+                <Route exact path='/currentlyReading' render={()=>(
+                                  <CurrentlyReading books = {this.state.books}  />
+                )} />
+                <Route exact path='/wanttoread' render={()=> (
+                                  <WantToRead books = {this.state.books} />
+                )} />
+                <Route exact path='/read' render={()=>(
+                                  <Read books = {this.state.books} />
+                                  
+
+                )} />
               <Route exact path='/search' render={() => (
                 <ListBooks />
               )}
