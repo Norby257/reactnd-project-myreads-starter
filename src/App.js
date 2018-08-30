@@ -1,56 +1,12 @@
 import React from "react"
-// import * as BooksAPI from './BooksAPI'
 import "./App.css"
 import {Route, Link} from 'react-router-dom';
 import CurrentlyReading from "./CurrentlyReading"
 import WantToRead from "./WantToRead"
 import Read from "./Read"
 import ListBooks from "./ListBooks"
-const books = [
-  {
-   id: 1,
-   title: "To Kill a Mockingbird",
-    author :"Harper Lee",
-    backgroundImage: "http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api"
-  },
+import * as BooksAPI from './BooksAPI';
 
-  {id: 2,
-  title: "Ender's Game",
-   author :"Orson Scott Card",
-   backgroundImage: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
- },
-
- {id: 3,
-  title: "Ender's Game",
-   author :"Orson Scott Card",
-   backgroundImage: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
- },
-
- {id: 4,
-  title: "1776",
-   author :"David McCullough",
-   backgroundImage: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
- },
-
- {id: 5,
-  title: "Harry Potter and the Sorcerer's Stone",
-   author :"J.K Rowling",
-   backgroundImage: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
- },
-
- {id: 6,
-  title: "The Hobbit",
-   author :"J.R.R Tolkein",
-   backgroundImage: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
- },
-
- {id: 7,
-  title: "Oh, the Places you'll Go!",
-   author :"Seuss",
-   backgroundImage: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api"
- }
-
-]
 class BooksApp extends React.Component {
   state = {
     /**
@@ -63,6 +19,36 @@ class BooksApp extends React.Component {
     //  TODO: instead of SET STATE - use ROUTE and then Link to should work with the button (to go back?)
     //  to '/' and then plus sign icon should route to '/search' 
     //  TODO: navigate back to home page with back button?
+
+    books: []
+  
+  }
+
+
+  componentDidMount() {
+    BooksAPI.getAll()
+    .then((books)=>{
+      this.setState(()=>({
+        books
+      }))
+    })
+
+  }
+  removeBook = (book) => {
+    this.setState((currentState)=> ({
+      books: currentState.book.filter((b) => {
+        return b.id !== book.id
+
+      })
+
+    }))
+
+  }
+  //  move book to a different shelf 
+  moveBook = (book) => {
+    this.setState({selectOptionValue: book.target.value
+
+    })
   }
 
   render() {
@@ -71,7 +57,6 @@ class BooksApp extends React.Component {
         {this.state.showSearchPage ? (
           <a
             className="close-search"
-            onClick={() => this.setState({ showSearchPage: false })}
           >
             Close
           </a>
@@ -83,9 +68,9 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div>
                 
-                <CurrentlyReading books = {books} />
-                <WantToRead books = {books} />
-                <Read books = {books} />
+                <CurrentlyReading books = {this.state.books}  />
+                <WantToRead books = {this.state.books} />
+                <Read books = {this.state.books} />
               <Route exact path='/search' render={() => (
                 <ListBooks />
               )}

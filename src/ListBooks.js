@@ -59,7 +59,7 @@ state = {
    return (
     <div>
     <div className="search-books">
-    {/* {JSON.stringify(this.state)} */}
+    {JSON.stringify(this.state)}
     <div className="search-books-bar">
     <div className="search-books-input-wrapper">
         {/*

@@ -9,15 +9,16 @@ function CurrentlyReading(props) {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                  <ol className='book-list'>
                  {props.books.map((book)=> (
-                   <li key ={book.id}>
+                   <li key ={book.id} className='book-list-item'>
                    {book.title}
                    {book.author}
                    <div
-                   className='contact-avatar'
+                   className='book-avatar'
                    style={{
                      backgroundImage: `url(${book.backgroundImage})`
                    }}
                    ></div>
+                   
                    
                   </li>
                   
