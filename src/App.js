@@ -16,16 +16,13 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     // showSearchPage: false
-    //  TODO: instead of SET STATE - use ROUTE and then Link to should work with the button (to go back?)
-    //  to '/' and then plus sign icon should route to '/search' 
-    //  TODO: navigate back to home page with back button?
-
     books: [],
     currentlyReading: [],
     wantToRead: [],
-    Read: []
-  
+    Read: [],
   }
+
+
   
 
 
@@ -38,6 +35,7 @@ class BooksApp extends React.Component {
     })
 
   }
+
 
   //  move book to a different shelf 
   //  get the book that was clicked 
@@ -54,7 +52,7 @@ class BooksApp extends React.Component {
 
 
   render() {
-    console.log( "APP STATE",this.state.books[0]);
+    console.log( "APP STATE",this.state);
     return (
       <div className="app">
       
@@ -73,7 +71,7 @@ class BooksApp extends React.Component {
 
               <div>
                 <Route exact path='/currentlyReading' render={()=>(
-                                  <CurrentlyReading books = {this.state.books}  />
+                                  <CurrentlyReading books = {this.state.books} currentlyReading = {this.state.currentlyReading} BooksAPI ={BooksAPI} />
                 )} />
                 <Route exact path='/wanttoread' render={()=> (
                                   <WantToRead books = {this.state.books} />
@@ -84,7 +82,7 @@ class BooksApp extends React.Component {
 
                 )} />
               <Route exact path='/search' books={this.state.books} render={() => (
-                <ListBooks />
+                <ListBooks books={this.state.books} />
               )}
               />
               

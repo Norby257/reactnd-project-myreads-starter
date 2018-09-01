@@ -1,8 +1,11 @@
 import React from "react"
+import Select from './Select';
 
 //  this takes props bc it is child component
 function CurrentlyReading(props) {
   console.log("Props", props)
+
+  
   return (
     <div>
       <div className="bookshelf">
@@ -22,17 +25,7 @@ function CurrentlyReading(props) {
                   }}
                 />
                   <div className="book-shelf-changer">
-                    <select>
-                      <option value="move" disabled>
-                        Move to...
-                      </option>
-                      <option value="currentlyReading">
-                        Currently Reading
-                      </option>
-                      <option value="wantToRead">Want to Read</option>
-                      <option value="read">Read</option>
-                      <option value="none">None</option>
-                    </select>
+                  <Select books={props}/>
                   </div>
                 </div>
              

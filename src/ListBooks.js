@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import { strictEqual } from 'assert';
 import {Link} from 'react-router-dom'
+import Select from './Select';
 //  TODO: code this so that UI updates based on what is in the input field
 
 
@@ -50,17 +51,20 @@ state = {
 
    console.log(this.state);
    console.log(this.props);
+   console.log({books});
+   console.log(books);
 
    
 
     //  TODO: code this so that UI updates based on what is in the input field
     //  .filter is not a method; it's bc the previous thing is undefined 
-//    const showingBooks = query === ''
-//    ? books 
-//    : books.filter((b) => (
-//  b.name.toLowerCase().includes(query.toLowerCase())
+   const showingBooks = query === ''
+
+   ? books 
+   : books.filter((b) => (
+ b.title.toLowerCase().includes(query.toLowerCase())
     
-//   ))
+  ))
 
   
    return (
@@ -76,7 +80,6 @@ state = {
             Close
           </Link>
     <div className="search-books">
-    {/* {JSON.stringify(this.state)} */}
     <div className="search-books-bar">
     <div className="search-books-input-wrapper">
         {/*
@@ -99,6 +102,32 @@ state = {
     </div>
   </div>
   <div className="list-books">
+  <ol className="books-grid">
+          {showingBooks.map(book => (
+            <li key={book.id} className="book-list-item">
+              <div className="book">
+                <div className="book-top">
+                <div
+                  className="book-cover"
+                  style={{
+                    width: 128,
+                    height: 193,
+                    backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+                  }}
+                />
+                  <div className="book-shelf-changer">
+                  <Select/>
+                  </div>
+                </div>
+             
+                <div className="book-title">{book.title}</div>
+                <div className="book-authors"> {book.authors} </div>
+                <span> {book.publishedDate} </span>
+                <span> {book.shelf} </span>
+              </div>
+            </li>
+          ))}
+        </ol>
 
 </div>
 
