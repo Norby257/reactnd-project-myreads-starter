@@ -23,6 +23,7 @@ class BooksApp extends React.Component {
     books: []
   
   }
+  
 
 
   componentDidMount() {
@@ -36,6 +37,8 @@ class BooksApp extends React.Component {
   }
 
   //  move book to a different shelf 
+  //  get the book that was clicked 
+  //  then update it 
   // moveBook = (book) => {
   //   this.setState({selectOptionValue: book.target.value
 
@@ -46,9 +49,12 @@ class BooksApp extends React.Component {
 
   // BooksAPI.update(book);
 
+
   render() {
+    console.log( "APP STATE",this.state.books[0]);
     return (
       <div className="app">
+      
         {this.state.showSearchPage ? (
           <a
             className="close-search"
@@ -73,10 +79,19 @@ class BooksApp extends React.Component {
                                   
 
                 )} />
-              <Route exact path='/search' render={() => (
+              <Route exact path='/search' books={this.state.books} render={() => (
                 <ListBooks />
               )}
               />
+              
+              <Route exact path = '/' render={()=>(
+                <div>
+                <CurrentlyReading books = {this.state.books} />
+                <WantToRead books = {this.state.books} />
+                <Read books = {this.state.books} />
+                </div>
+ 
+              )} />
               </div>
             </div>
             <div className="open-search">

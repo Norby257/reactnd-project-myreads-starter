@@ -44,10 +44,17 @@ state = {
  }
 
  render() {
+   // why is this undefined
    const {query} = this.state
+   const {books} = this.props
 
+   console.log(this.state);
+   console.log(this.props);
+
+   
 
     //  TODO: code this so that UI updates based on what is in the input field
+    //  .filter is not a method; it's bc the previous thing is undefined 
 //    const showingBooks = query === ''
 //    ? books 
 //    : books.filter((b) => (
@@ -69,7 +76,7 @@ state = {
             Close
           </Link>
     <div className="search-books">
-    {JSON.stringify(this.state)}
+    {/* {JSON.stringify(this.state)} */}
     <div className="search-books-bar">
     <div className="search-books-input-wrapper">
         {/*
@@ -80,12 +87,15 @@ state = {
           However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
           you don't find a specific author or title. Every search is limited by search terms.
         */}
-        <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={(event) => this.updateQuery(event.target.value)}/>
+        <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
 
       </div>
     </div>
     <div className="search-books-results">
-      <ol className="books-grid"></ol>
+
+      <ol className="books-grid">    
+      
+      </ol>
     </div>
   </div>
   <div className="list-books">
