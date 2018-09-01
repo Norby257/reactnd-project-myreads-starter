@@ -10,26 +10,42 @@ function CurrentlyReading(props) {
                  <ol className='book-list'>
                  {props.books.map((book)=> (
                    <li key ={book.id} className='book-list-item'>
-                   <span>{book.title}</span>
-                  <span> {book.authors} </span>
+                   <div className='book'>
+                   <div className='book-top'>
+                   <div className="book-shelf-changer">
+                              <select>
+                                <option value="move" disabled>Move to...</option>
+                                <option value="currentlyReading">Currently Reading</option>
+                                <option value="wantToRead">Want to Read</option>
+                                <option value="read">Read</option>
+                                <option value="none">None</option>
+                              </select>
+                            </div>
+                   <div className='book-title'>{book.title}</div>
+                  <div className='book-authors'> {book.authors} </div>
+                  </div>
+                  <div className='book-cover' style={{width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})`}}>
+                   </div>
                   <span> {book.publishedDate} </span>
                   <span> {book.shelf} </span>
-                  {/* <span> {book.imageLinks.smallThumbnail} </span> */}
-                  <span>{book.shelf} </span>
-                   <div
-                   className='book-avatar'
-                   style={{
-                     backgroundImage: `url(${book.imageLinks.smallThumbnail})`
-                   }}
-                   ></div>
+                
+                          </div>
+
+                 
+                  
+                
                    
-                   
+        
                   </li>
                   
                  ))}
                  </ol>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
+                    {props.books.map((book)=>(
+                      <li key ={book.id} className='book-list-item'>
+                      </li>
+                    ))}
                       <li>
                         <div className="book">
                           <div className="book-top">
@@ -44,15 +60,9 @@ function CurrentlyReading(props) {
                               </select>
                             </div>
                           </div>
-                          <div className="book-title">To Kill a Mockingbird</div>
-                          <div className="book-authors">Harper Lee</div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className="book">
-                          <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: 'url("http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api")' }}></div>
-                            <div className="book-shelf-changer">
+                          <div className="book-title">  </div>
+                          <div className="book-authors">Autho prop goes here </div>
+                          <div className="book-shelf-changer">
                               <select>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
@@ -61,11 +71,9 @@ function CurrentlyReading(props) {
                                 <option value="none">None</option>
                               </select>
                             </div>
-                          </div>
-                          <div className="book-title">Ender's Game</div>
-                          <div className="book-authors">Orson Scott Card</div>
                         </div>
                       </li>
+                      
                     </ol>
                   </div>
                 </div>

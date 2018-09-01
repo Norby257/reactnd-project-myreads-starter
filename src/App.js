@@ -20,7 +20,10 @@ class BooksApp extends React.Component {
     //  to '/' and then plus sign icon should route to '/search' 
     //  TODO: navigate back to home page with back button?
 
-    books: []
+    books: [],
+    currentlyReading: [],
+    wantToRead: [],
+    Read: []
   
   }
   
@@ -67,6 +70,7 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
+
               <div>
                 <Route exact path='/currentlyReading' render={()=>(
                                   <CurrentlyReading books = {this.state.books}  />
