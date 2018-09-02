@@ -9,13 +9,7 @@ import * as BooksAPI from './BooksAPI';
 
 class BooksApp extends React.Component {
   state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    // showSearchPage: false
+
     books: [],
     currentlyReading: [],
     wantToRead: [],
@@ -25,7 +19,7 @@ class BooksApp extends React.Component {
 
   
 
-
+//  get all books 
   componentDidMount() {
     BooksAPI.getAll()
     .then((books)=>{
@@ -36,20 +30,20 @@ class BooksApp extends React.Component {
 
   }
 
+//  move book to a different shelf 
 
-  //  move book to a different shelf 
-  //  get the book that was clicked 
-  //  then update it 
-  // moveBook = (book) => {
-  //   this.setState({selectOptionValue: book.target.value
-
-  //   })
-  // }
-
-  //   so this is after setState 
-
-  // BooksAPI.update(book);
-
+updateShelf = (book, shelf) => {
+  //  use BooksAPI update method 
+  BooksAPI.update(book, shelf)
+  .then((book)=>{
+    // set new state - concat the book to the array 
+    this.setState((currentState)=>({
+      books: currentState.books.concat([book])
+      
+    }))
+    
+  })
+}
 
   render() {
     console.log( "APP STATE",this.state);
@@ -71,13 +65,13 @@ class BooksApp extends React.Component {
 
               <div>
                 <Route exact path='/currentlyReading' render={()=>(
-                                  <CurrentlyReading books = {this.state.books} currentlyReading = {this.state.currentlyReading} BooksAPI ={BooksAPI} />
+                                  <CurrentlyReading books = {this.state.books} updateShelf={this.updateShelf}  />
                 )} />
                 <Route exact path='/wanttoread' render={()=> (
-                                  <WantToRead books = {this.state.books} />
+                                  <WantToRead books = {this.state.books} updateShelf={this.updateShelf} />
                 )} />
                 <Route exact path='/read' render={()=>(
-                                  <Read books = {this.state.books} />
+                                  <Read books = {this.state.books} updateShelf={this.updateShelf} />
                                   
 
                 )} />
@@ -88,9 +82,9 @@ class BooksApp extends React.Component {
               
               <Route exact path = '/' render={()=>(
                 <div>
-                <CurrentlyReading books = {this.state.books} />
-                <WantToRead books = {this.state.books} />
-                <Read books = {this.state.books} />
+                <CurrentlyReading books = {this.state.books} updateShelf={this.updateShelf} />
+                <WantToRead books = {this.state.books} updateShelf={this.updateShelf} />
+                <Read books = {this.state.books} updateShelf={this.updateShelf} />
                 </div>
  
               )} />

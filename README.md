@@ -1,3 +1,19 @@
+# MyReads Project 
+
+Welcome to MyReads! MyReads is an app that allows you to manage your bookshelf.
+ Select and categorize books you have read, currently reading, or want to read.
+
+
+# Technologies used 
+
+The front end and UI of this project are built in React JS. There is also an API server and client library, so that information is persisted when interacing with the application. 
+
+
+
+# Installation 
+
+To launch the project, clone the repo, run `npm install` and then `npm start.` This project will launch in a new browser, hosted at `http://localhost:3000/`
+
 # MyReads Project
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.

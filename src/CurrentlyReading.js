@@ -25,7 +25,7 @@ function CurrentlyReading(props) {
                   }}
                 />
                   <div className="book-shelf-changer">
-                  <Select books={props}/>
+                  <Select books={props} onChange={(event) => props.updateShelf(book, this.state.selectValue)}/>
                   </div>
                 </div>
              
