@@ -31,17 +31,9 @@ state = {
   
  updateQuery = (query) => {
    this.setState(() => ({
-     query: query.trim()
+     query: query
 
    }))
- }
-
- // //  TODO: Reset the input field 
-
- // by using composition - clearQuery calls UpdateQuery
- // and the UpdateQuery calls this.setState
- clearQuery = () => {
-   this.updateQuery('')
  }
 
  render() {
@@ -130,6 +122,7 @@ state = {
         </ol>
 
 </div>
+
 
 </div>
 

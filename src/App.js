@@ -10,10 +10,8 @@ import * as BooksAPI from './BooksAPI';
 class BooksApp extends React.Component {
   state = {
 
-    books: [],
-    currentlyReading: [],
-    wantToRead: [],
-    Read: [],
+    books: []
+
   }
 
 
@@ -32,7 +30,7 @@ class BooksApp extends React.Component {
 
 //  move book to a different shelf 
 //   I think i'm close to having this part complete, but I did not finish the moving Shelf functionality 
-//  pseudocode for that
+//  pseudocode for that:
 //   update the shelf, using an OnChange listener 
 //  using the BooksAPI.update method, 
 //  get the ID of the book, check it does not already exist in the array
@@ -52,18 +50,16 @@ updateShelf = (book, shelf) => {
   })
 }
 
+//  searching the books
+
   render() {
     console.log( "APP STATE",this.state);
     return (
       <div className="app">
       
-        {this.state.showSearchPage ? (
-          <a
-            className="close-search"
-          >
-            Close
-          </a>
-        ) : (
+
+       
+         
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
