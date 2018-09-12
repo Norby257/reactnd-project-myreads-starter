@@ -33,7 +33,7 @@ class Select extends React.Component {
     //  TODO render here 
     render() {
         const {event} = this.state
-        console.log(this.state);
+       
         return (
             <select value={this.state.selectValue} onChange ={this.handleChange}>
             <option value="move" disabled>

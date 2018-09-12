@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { strictEqual } from 'assert';
 import {Link} from 'react-router-dom'
 import Select from './Select';
+
 //  TODO: code this so that UI updates based on what is in the input field
 
 
@@ -22,12 +23,20 @@ class ListBooks extends React.Component {
  
 //  TODO: add state to the component 
 state = {
-  query: ''
+  query: '',
+ 
 }
 
   //  TODO: code this so that UI updates based on what is in the input field
 
   // TODO:  methods to update the query 
+
+  //  TODO: books need to be from the search API 
+  //   not just limited to what can be found on the shelf 
+
+  //  search al the books 
+
+
   
  updateQuery = (query) => {
    this.setState(() => ({
@@ -36,17 +45,14 @@ state = {
    }))
  }
 
+
+
  render() {
    // why is this undefined
    const {query} = this.state
    const {books} = this.props
 
-   console.log(this.state);
-   console.log(this.props);
-   console.log({books});
-   console.log(books);
 
-   
 
     //  TODO: code this so that UI updates based on what is in the input field
     //  .filter is not a method; it's bc the previous thing is undefined 

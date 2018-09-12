@@ -1,12 +1,9 @@
 import React from "react"
 import "./App.css"
 import {Route, Link} from 'react-router-dom';
-import CurrentlyReading from "./CurrentlyReading"
-import WantToRead from "./WantToRead"
-import Read from "./Read"
 import ListBooks from "./ListBooks"
 import * as BooksAPI from './BooksAPI';
-
+import Shelf from './Shelf';
 class BooksApp extends React.Component {
   state = {
 
@@ -14,10 +11,6 @@ class BooksApp extends React.Component {
 
   }
 
-
-  
-
-//  get all books 
   componentDidMount() {
     BooksAPI.getAll()
     .then((books)=>{
@@ -37,23 +30,9 @@ class BooksApp extends React.Component {
 //   if it does not already exist, use this.setState to add it to the array 
 //  we know which array we send it to, since we are using the OnChange on this.state.selectValue 
 
-updateShelf = (book, shelf) => {
-  //  use BooksAPI update method 
-  BooksAPI.update(book, shelf)
-  .then((book)=>{
-    // set new state - concat the book to the array 
-    this.setState((currentState)=>({
-      books: currentState.books.concat([book])
-      
-    }))
-    
-  })
-}
 
-//  searching the books
 
   render() {
-    console.log( "APP STATE",this.state);
     return (
       <div className="app">
       
@@ -67,30 +46,21 @@ updateShelf = (book, shelf) => {
             <div className="list-books-content">
 
               <div>
-                <Route exact path='/currentlyReading' render={()=>(
-                                  <CurrentlyReading books = {this.state.books} updateShelf={this.updateShelf}  />
-                )} />
-                <Route exact path='/wanttoread' render={()=> (
-                                  <WantToRead books = {this.state.books} updateShelf={this.updateShelf} />
-                )} />
-                <Route exact path='/read' render={()=>(
-                                  <Read books = {this.state.books} updateShelf={this.updateShelf} />
+               
+                                  <Shelf books = {this.state.books} updateShelf={this.updateShelf} title="Currently Reading"  />
+              
+                
+                                  <Shelf books = {this.state.books} updateShelf={this.updateShelf} title="Want to Read" />
+              
+                
+                                  <Shelf books = {this.state.books} updateShelf={this.updateShelf} title="Read" />
                                   
 
-                )} />
+              
               <Route exact path='/search' books={this.state.books} render={() => (
                 <ListBooks books={this.state.books} />
               )}
               />
-              
-              <Route exact path = '/' render={()=>(
-                <div>
-                <CurrentlyReading books = {this.state.books} updateShelf={this.updateShelf} />
-                <WantToRead books = {this.state.books} updateShelf={this.updateShelf} />
-                <Read books = {this.state.books} updateShelf={this.updateShelf} />
-                </div>
- 
-              )} />
               </div>
             </div>
             <div className="open-search">
