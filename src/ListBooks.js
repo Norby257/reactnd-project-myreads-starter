@@ -2,42 +2,20 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import { strictEqual } from 'assert';
 import {Link} from 'react-router-dom'
-import Select from './Select';
+import Book from './Book';
 
-//  TODO: code this so that UI updates based on what is in the input field
-
-
-//  TODO: pass state as a value 
-//  TODO: have a fn that handles on change 
-
-// TODO: pass this fn down so it filters list based on 
-//   what ever we type in the input field
-
-// TODO: proptypes - only string allowed to be entered 
-
-//  TODO: save book info in a separate file 
-
-
-//  TODO: refactor into class Component 
 class ListBooks extends React.Component {
  
-//  TODO: add state to the component 
+
 state = {
   query: '',
  
 }
 
-  //  TODO: code this so that UI updates based on what is in the input field
-
-  // TODO:  methods to update the query 
-
   //  TODO: books need to be from the search API 
   //   not just limited to what can be found on the shelf 
 
-  //  search al the books 
-
-
-  
+  //  search all the books 
  updateQuery = (query) => {
    this.setState(() => ({
      query: query
@@ -46,16 +24,19 @@ state = {
  }
 
 
+//  clearQuery = () => {
+//    this.updateQuery(' ')
+//  }
 
  render() {
-   // why is this undefined
+  //  destructure state and props
    const {query} = this.state
    const {books} = this.props
 
+console.log(books);
+console.log(query);
 
-
-    //  TODO: code this so that UI updates based on what is in the input field
-    //  .filter is not a method; it's bc the previous thing is undefined 
+//  filter contacts based on the input field 
    const showingBooks = query === ''
 
    ? books 
@@ -67,11 +48,7 @@ state = {
   
    return (
     <div>
-      {/* <a
-            className="close-search"
-          >
-            Close
-          </a> */}
+   
           <Link to="/"
             className="close-search"
           >
@@ -94,36 +71,19 @@ state = {
     </div>
     <div className="search-books-results">
 
-      <ol className="books-grid">    
+      <ol className="books-grid">  
+      {
+        showingBooks.map(function(book){
+          return <Book books={book} key={book.id} />
+        })
+      }  
       
       </ol>
     </div>
   </div>
   <div className="list-books">
   <ol className="books-grid">
-          {showingBooks.map(book => (
-            <li key={book.id} className="book-list-item">
-              <div className="book">
-                <div className="book-top">
-                <div
-                  className="book-cover"
-                  style={{
-                    width: 128,
-                    height: 193,
-                    backgroundImage: `url(${book.imageLinks.smallThumbnail})`
-                  }}
-                />
-                  <div className="book-shelf-changer">
-                  <Select/>
-                  </div>
-                </div>
-             
-                <div className="book-title">{book.title}</div>
-                <div className="book-authors"> {book.authors} </div>
-                <span> {book.publishedDate} </span>
-                <span> {book.shelf} </span>
-              </div>
-            </li>
+         
           ))}
         </ol>
 

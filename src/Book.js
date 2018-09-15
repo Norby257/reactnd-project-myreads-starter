@@ -4,7 +4,7 @@ import Select from './Select';
 function Book(props) {
     
         return (
-            <li key={props.books.id} className="book-list-item">
+            <li className="book-list-item">
             <div className="book">
               <div className="book-top">
               <div
@@ -22,7 +22,7 @@ function Book(props) {
               </div>
            
               <div className="book-title">{props.books.title}</div>
-              <div className="book-authors"> {props.books.authors} </div>
+              <div className="book-authors"> {props.books.authors ? props.books.authors.join(', ') :' '} </div>
               <span> {props.books.publishedDate} </span>
               <span> {props.books.shelf} </span>
             </div>
