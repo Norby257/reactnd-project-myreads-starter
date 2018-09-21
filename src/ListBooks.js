@@ -8,14 +8,15 @@ class ListBooks extends React.Component {
  
 
 state = {
-  query: '',
+  query: ''
+
  
 }
 
   //  TODO: books need to be from the search API 
   //   not just limited to what can be found on the shelf 
 
-  //  search all the books 
+  //  query all of the books 
  updateQuery = (query) => {
    this.setState(() => ({
      query: query
@@ -81,7 +82,7 @@ console.log(query);
   <ol className="books-grid">
   {
         showingBooks.map(function(book){
-          return <Book />
+          return <Book key={book.id} />
         }) 
          
           }
