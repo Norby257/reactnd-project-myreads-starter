@@ -3,19 +3,30 @@ import PropTypes from 'prop-types';
 import { strictEqual } from 'assert';
 import {Link} from 'react-router-dom'
 import Book from './Book';
-
+import * as BooksAPI  from './BooksAPI.js'
 class ListBooks extends React.Component {
  
 
 state = {
-  query: ''
+  query: '', 
+  allBooks: []
 
  
 }
 
   //  TODO: books need to be from the search API 
   //   not just limited to what can be found on the shelf 
+//  need to call API before filtering data? 
+//  getting 403 error for using .search
+componentDidMount() {
+  BooksAPI.search()
+  .then((allBooks)=>{
+    this.setState(()=>({
+      allBooks
+    }))
 
+  })
+}
   //  query all of the books 
  updateQuery = (query) => {
    this.setState(() => ({
@@ -72,25 +83,16 @@ console.log(query);
     </div>
     <div className="search-books-results">
 
-      <ol className="books-grid">  
-        
+      <ol className="books-grid"> 
+    {showingBooks.map((book)=>(
+      <Book key={book.id} className='book-list-item' />
+    
+    ))}
+      
       
       </ol>
     </div>
   </div>
-  <div className="list-books">
-  <ol className="books-grid">
-  {
-        showingBooks.map(function(book){
-          return <Book key={book.id} />
-        }) 
-         
-          }
-        </ol>
-
-</div>
-
-
 </div>
 
    )
