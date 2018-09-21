@@ -72,19 +72,19 @@ console.log(query);
     <div className="search-books-results">
 
       <ol className="books-grid">  
-      {
-        showingBooks.map(function(book){
-          return <Book books={book} key={book.id} />
-        })
-      }  
+        
       
       </ol>
     </div>
   </div>
   <div className="list-books">
   <ol className="books-grid">
+  {
+        showingBooks.map(function(book){
+          return <Book />
+        }) 
          
-          ))}
+          }
         </ol>
 
 </div>
