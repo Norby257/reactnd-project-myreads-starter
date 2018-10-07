@@ -9,7 +9,7 @@ class ListBooks extends React.Component {
 
 state = {
   query: '', 
-  allBooks: []
+  searchedBooks: []
 
  
 }
@@ -18,21 +18,33 @@ state = {
   //   not just limited to what can be found on the shelf 
 //  need to call API before filtering data? 
 //  getting 403 error for using .search
-componentDidMount() {
-  BooksAPI.search()
-  .then((allBooks)=>{
-    this.setState(()=>({
-      allBooks
-    }))
+//  moving search to the update query method 
 
-  })
+componentDidMount() {
+  // BooksAPI.search()
+  // .then((searchedBooks)=>{
+  //   this.setState(()=>({
+  //     searchedBooks
+  //   }))
+
+  // })
 }
   //  query all of the books 
+  //   this is where we can run out api call - taking query as an argument? 
  updateQuery = (query) => {
    this.setState(() => ({
      query: query
 
    }))
+   //  
+   BooksAPI.search(query)
+   .then((searchedBooks)=>{
+    //  this.setState(()=>({
+    //    searchedBooks
+    //  }))
+    console.log(query)
+    
+   })
  }
 
 
@@ -43,19 +55,17 @@ componentDidMount() {
  render() {
   //  destructure state and props
    const {query} = this.state
-   const {books} = this.props
 
-console.log(books);
 console.log(query);
 
 //  filter contacts based on the input field 
-   const showingBooks = query === ''
+//    const showingBooks = query === ''
 
-   ? books 
-   : books.filter((b) => (
- b.title.toLowerCase().includes(query.toLowerCase())
+//    ? books 
+//    : books.filter((b) => (
+//  b.title.toLowerCase().includes(query.toLowerCase())
     
-  ))
+//   ))
 
   
    return (
@@ -84,10 +94,10 @@ console.log(query);
     <div className="search-books-results">
 
       <ol className="books-grid"> 
-    {showingBooks.map((book)=>(
+    {/* {showingBooks.map((book)=>(
       <Book key={book.id} className='book-list-item' />
     
-    ))}
+    ))} */}
       
       
       </ol>
