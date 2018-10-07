@@ -15,22 +15,21 @@ state = {
 }
 
   //  TODO: books need to be from the search API 
+  // TODO: FIX BUG so only the search bar and books from search result show 
   //   not just limited to what can be found on the shelf 
-//  need to call API before filtering data? 
-//  getting 403 error for using .search
-//  moving search to the update query method 
+  //  use search API
+  //   do not show what;s oon the shelf 
+  //  display books returned from API call
+  //   this means, map over the results and render them to the screen 
+  //   ina a way that is probably similar to what you did on shelf or app component 
 
-componentDidMount() {
-  // BooksAPI.search()
-  // .then((searchedBooks)=>{
-  //   this.setState(()=>({
-  //     searchedBooks
-  //   }))
 
-  // })
-}
-  //  query all of the books 
-  //   this is where we can run out api call - taking query as an argument? 
+ 
+
+//   does the following 
+//  calls .search API 
+// probably needs to filter based on user input before displaying it 
+//   and then render results from search page
  updateQuery = (query) => {
    this.setState(() => ({
      query: query
@@ -39,10 +38,14 @@ componentDidMount() {
    //  
    BooksAPI.search(query)
    .then((searchedBooks)=>{
-    //  this.setState(()=>({
-    //    searchedBooks
-    //  }))
-    console.log(query)
+     this.setState(()=>({
+       searchedBooks
+     }))
+     searchedBooks.map(function(searchedbook){
+       return <Book books={searchedBooks}/>
+     })
+    console.log(searchedBooks)
+    console.log(this.state)
     
    })
  }
@@ -58,11 +61,11 @@ componentDidMount() {
 
 console.log(query);
 
-//  filter contacts based on the input field 
+//  filter books based on the input field 
 //    const showingBooks = query === ''
 
-//    ? books 
-//    : books.filter((b) => (
+//    ? this.state.searchedbooks 
+//    : this.state.searchedbooks.filter((b) => (
 //  b.title.toLowerCase().includes(query.toLowerCase())
     
 //   ))
@@ -93,14 +96,14 @@ console.log(query);
     </div>
     <div className="search-books-results">
 
-      <ol className="books-grid"> 
+      {/* <ol className="books-grid">  */}
     {/* {showingBooks.map((book)=>(
       <Book key={book.id} className='book-list-item' />
     
     ))} */}
       
       
-      </ol>
+      {/* </ol> */}
     </div>
   </div>
 </div>
