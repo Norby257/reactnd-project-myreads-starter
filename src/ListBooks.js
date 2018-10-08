@@ -14,22 +14,9 @@ state = {
  
 }
 
-  //  TODO: books need to be from the search API 
-  // TODO: FIX BUG so only the search bar and books from search result show 
-  //   not just limited to what can be found on the shelf 
-  //  use search API
-  //   do not show what;s oon the shelf 
-  //  display books returned from API call
-  //   this means, map over the results and render them to the screen 
-  //   ina a way that is probably similar to what you did on shelf or app component 
-
-
  
+  // TODO: FIX BUG so only the search bar and books from search result show 
 
-//   does the following 
-//  calls .search API 
-// probably needs to filter based on user input before displaying it 
-//   and then render results from search page
  updateQuery = (query) => {
    this.setState(() => ({
      query: query
@@ -51,9 +38,7 @@ state = {
  }
 
 
-//  clearQuery = () => {
-//    this.updateQuery(' ')
-//  }
+
 
  render() {
   //  destructure state and props
