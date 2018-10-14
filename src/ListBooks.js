@@ -1,6 +1,5 @@
-import React, { Component} from 'react';
-import PropTypes from 'prop-types';
-import { strictEqual } from 'assert';
+import React from 'react';
+
 import {Link} from 'react-router-dom'
 import Book from './Book';
 import * as BooksAPI  from './BooksAPI.js'

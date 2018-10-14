@@ -1,9 +1,9 @@
-import React, {Component} from 'react'; 
+import React from 'react'; 
 
 class Select extends React.Component {
     // TODO: state here 
     state = {
-        shelf: ''
+        shelf: 'none'
     }
 
 
