@@ -24,7 +24,7 @@ function Book(props) {
               <div className="book-title">{props.books.title}</div>
               <div className="book-authors"> {props.books.authors ? props.books.authors.join(', ') :' '} </div>
               <span> {props.books.publishedDate} </span>
-              <span> {props.books.shelf} </span>
+              
             </div>
           </li>
         )

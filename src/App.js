@@ -17,13 +17,23 @@ class BooksApp extends React.Component {
       this.setState(()=>({
         books
       }))
+  
+     
     })
   }
+
+  // TODO: filter books by shelf, save as variable, pass as props to shelf! 
+
 
 
 
   render() {
-    
+      const currentlyReading = this.state.books.filter(book => book.shelf === 'currentlyReading');
+      const wantToRead = this.state.books.filter(book => book.shelf === 'wantToRead');
+      console.log(currentlyReading);
+      console.log(wantToRead);
+      const read = this.state.books.filter(book => book.shelf === 'read');
+      console.log('read', read);
     return (
       <div className="app">
       
@@ -38,13 +48,13 @@ class BooksApp extends React.Component {
 
               <div>
                
-                                  <Shelf books = {this.state.books} updateShelf={this.updateShelf} title="Currently Reading"  />
+                                  <Shelf books = {currentlyReading} updateShelf={this.updateShelf} title="Currently Reading"  />
               
                 
-                                  <Shelf books = {this.state.books} updateShelf={this.updateShelf} title="Want to Read" />
+                                  <Shelf books = {wantToRead} updateShelf={this.updateShelf} title="Want to Read" />
               
                 
-                                  <Shelf books = {this.state.books} updateShelf={this.updateShelf} title="Read" />
+                                  <Shelf books = {read} updateShelf={this.updateShelf} title="Read" />
                                   
 
               
