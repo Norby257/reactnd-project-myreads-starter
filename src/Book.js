@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from './Select';
 
 function Book(props) {
     
@@ -16,7 +15,6 @@ function Book(props) {
                 }}
               />
                 <div className="book-shelf-changer">
-                <Select shelf={props.books.shelf}/>
 
                 </div>
               </div>
