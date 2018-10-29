@@ -81,7 +81,7 @@ console.log(query);
 
        <ol className="books-grid">  
      {this.state.searchedBooks.map((book)=>(
-      <Book key={book.id} className='book-list-item' />
+      <Book key={book.id} books={book} className='book-list-item' />
     
     ))} 
       

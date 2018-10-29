@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Book(props) {
-    
+    //   TODO: update code so it checks to see if thumbnail exists and if not, return a default no image avail 
         return (
             <li className="book-list-item">
             <div className="book">
@@ -11,7 +11,8 @@ function Book(props) {
                 style={{
                   width: 128,
                   height: 193,
-                  backgroundImage: `url(${props.books.imageLinks.smallThumbnail})`
+                  backgroundImage: `url(${props.books.imageLinks.smallThumbnail ? props.books.imageLinks.smallThumbnail : null})`
+                  
                 }}
               />
                 <div className="book-shelf-changer">
