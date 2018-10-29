@@ -1,7 +1,10 @@
 import React from 'react';
-
+//   TODO - pass slect as a prop to book on the shelf changer div 
+// write a method and then pass that too as a prop  
+import Select from './Select'
 function Book(props) {
     //   TODO: update code so it checks to see if thumbnail exists and if not, return a default no image avail 
+    //   TODO: user needs to be able to move a book between the shelves 
         return (
             <li className="book-list-item">
             <div className="book">
@@ -16,6 +19,7 @@ function Book(props) {
                 }}
               />
                 <div className="book-shelf-changer">
+                <Select />
 
                 </div>
               </div>

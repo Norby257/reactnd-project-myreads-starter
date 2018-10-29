@@ -4,7 +4,7 @@ import { Route,  Link } from "react-router-dom"
 import ListBooks from "./ListBooks"
 import * as BooksAPI from "./BooksAPI"
 import Shelf from "./Shelf"
-import Select from "./Select"
+
 class BooksApp extends React.Component {
   state = {
     books: []
@@ -20,9 +20,6 @@ class BooksApp extends React.Component {
 
   //  TODO update shelf of book
  
-  //  TODO: refactor so that there is a main HOME component that is rendered here 
-  //   so that I can use the route EXACT to show only the HOME or only the SEARCH 
-
   render() {
     const currentlyReading = this.state.books.filter(
       book => book.shelf === "currentlyReading"
