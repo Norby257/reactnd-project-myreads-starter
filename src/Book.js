@@ -23,10 +23,9 @@ function Book(props) {
                   
                 }}
               />
-                <div className="book-shelf-changer" onChange={(event) => this.updateShelf(event.target.value)}>
-                <Select />
 
-                </div>
+<Select />
+
               </div>
            
               <div className="book-title">{props.books.title}</div>

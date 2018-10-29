@@ -6,11 +6,12 @@ class Select extends React.Component {
         shelf: 'none'
     }
 
-    //  TODO: functions here
-    handleChange = (event) => {
-       
-            this.setState({selectValue: event.target.value})
+    //  TODO: functions here - ok so this had the right idea, just re-naming it 
 
+    // updateShelf = (event) => {
+    //     this.setState({selectValue: event.target.value})
+    //     console.log(this.state)
+    // }
     
         //  get book by book id 
         //  push that book to array
@@ -24,7 +25,7 @@ class Select extends React.Component {
 
         //  push to array? not sure where exactly that is stored
         
-       }
+       
 
        
 
@@ -34,6 +35,8 @@ class Select extends React.Component {
         const {event} = this.state
        
         return (
+            <div className="book-shelf-changer" onChange={(event) => this.updateShelf(event.target.value)}>
+            
             <select value={this.state.selectValue} onChange ={this.handleChange}>
             <option value="move" disabled>
               Move to...
@@ -45,6 +48,7 @@ class Select extends React.Component {
             <option value="read">Read</option>
             <option value="none">None</option>
           </select>
+          </div>
 
         )
     }
