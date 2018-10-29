@@ -6,7 +6,6 @@ class Select extends React.Component {
         shelf: 'none'
     }
 
-
     //  TODO: functions here
     handleChange = (event) => {
        
