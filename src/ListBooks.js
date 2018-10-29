@@ -3,6 +3,8 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import Book from './Book';
 import * as BooksAPI  from './BooksAPI.js'
+//  API calls are working as expected, yay 
+//   just need to map over them below when they are rendered 
 class ListBooks extends React.Component {
  
 
@@ -13,15 +15,12 @@ state = {
  
 }
 
- 
-  // TODO: FIX BUG so only the search bar and books from search result show 
-
  updateQuery = (query) => {
    this.setState(() => ({
      query: query
 
    }))
-   //  
+
    BooksAPI.search(query)
    .then((searchedBooks)=>{
      this.setState(()=>({
@@ -80,14 +79,14 @@ console.log(query);
     </div>
     <div className="search-books-results">
 
-      {/* <ol className="books-grid">  */}
-    {/* {showingBooks.map((book)=>(
+       <ol className="books-grid">  
+     {this.state.searchedBooks.map((book)=>(
       <Book key={book.id} className='book-list-item' />
     
-    ))} */}
+    ))} 
       
       
-      {/* </ol> */}
+       </ol> 
     </div>
   </div>
 </div>

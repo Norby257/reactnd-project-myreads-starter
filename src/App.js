@@ -19,6 +19,7 @@ class BooksApp extends React.Component {
   }
 
   //  TODO update shelf of book
+ 
   //  TODO: refactor so that there is a main HOME component that is rendered here 
   //   so that I can use the route EXACT to show only the HOME or only the SEARCH 
 
@@ -35,7 +36,7 @@ class BooksApp extends React.Component {
     console.log("read", read)
     return (
       <div className="app">
-      <Route exact path='/search' exact component = {ListBooks} />
+      <Route exact path='/search' exact component = {ListBooks} books={this.state.books} />
       <Route exact path = '/' render={()=> (
            <div className="list-books">
            <div className="list-books-title">
