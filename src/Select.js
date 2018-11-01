@@ -9,31 +9,26 @@ class Select extends React.Component {
   //  TODO: functions here - ok so this had the right idea, just re-naming it
 
   updateShelf = (event) => {
-      this.setState({selectValue: event.target.value})
+      this.setState({shelf: event.target.value})
       console.log(this.state)
   }
 
   //  get book by book id
   //  push that book to array
-  //  where state name is equal to the value selected?
 
-  // BooksAPI.update()
-  // .then((book)=>{
-
-  // })
-
-  //  push to array? not sure where exactly that is stored
-
-  //  TODO render here
+  //   destructure props 
   render() {
-    const { event } = this.state
+    // const { event } = this.state
+    // const{ book, books} = this.props
 
     return (
       <div
         className="book-shelf-changer"
         onChange={event => this.updateShelf(event.target.value)}
       >
-        <select value={this.state.selectValue} onChange={this.handleChange}>
+        {/* <select  onChange={this.handleChange} defaultValue={this.state}> */}
+        <select onChange={this.props.handleOnChange}>
+
           <option value="move" disabled>
             Move to...
           </option>

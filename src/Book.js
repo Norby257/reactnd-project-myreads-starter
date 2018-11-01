@@ -5,16 +5,15 @@ import noImageAvail from './images/no_img_available.png'
 import Select from './Select'
 class Book extends React.Component {
 
-//   updateShelf = (event) => {
-//     this.setState({selectValue: event.target.value})
-//     console.log(this.state)
-// }
-    //   TODO: update code so it checks to see if thumbnail exists and if not, return a default no image avail 
+
+
     //   TODO: user needs to be able to move a book between the shelves 
     render() {
-
+      //  destructure props here
+     const {book, books, updateShelf} = this.props
       //  error handling for no cover / nor no author 
       const bookCover = this.props.books.imageLinks && this.props.books.imageLinks.smallThumbnail ? this.props.books.imageLinks.smallThumbnail : noImageAvail
+      //   console logging for testing and debugging purposes 
       console.log(bookCover)
     
 

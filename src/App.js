@@ -19,6 +19,15 @@ class BooksApp extends React.Component {
   }
 
   //  TODO update shelf of book
+
+    //   call booksAPI.update 
+ 
+       // update set state 
+
+             //   filter out applicable book 
+       
+    //  add the applicable book
+
  
   render() {
     const currentlyReading = this.state.books.filter(
