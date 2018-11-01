@@ -2,19 +2,18 @@ import React from "react"
 
 class Select extends React.Component {
   // TODO: state here
-  state = {
-    shelf: "none"
-  }
+ constructor(props) {
+   super(props);
+   this.state = {value: 'none'};
 
-  //  TODO: functions here - ok so this had the right idea, just re-naming it
+  this.handleChange = this.handleChange.bind(this);
+ }
+//   handle change function here - handle what was selected 
+ handleChange(event) {
+   this.setState({value: event.target.value})
+   console.log(this.state);
+ }
 
-  updateShelf = (event) => {
-      this.setState({shelf: event.target.value})
-      console.log(this.state)
-  }
-
-  //  get book by book id
-  //  push that book to array
 
   //   destructure props 
   render() {
@@ -24,10 +23,10 @@ class Select extends React.Component {
     return (
       <div
         className="book-shelf-changer"
-        onChange={event => this.updateShelf(event.target.value)}
+        
       >
-        {/* <select  onChange={this.handleChange} defaultValue={this.state}> */}
-        <select onChange={this.props.handleOnChange}>
+ 
+        <select defaultValue={this.state.value} onChange={this.handleOnChange}>
 
           <option value="move" disabled>
             Move to...

@@ -35,7 +35,7 @@ class Book extends React.Component {
             }}
           />
 
-              <Select />
+              <Select handleChange={this.handleChange}/>
 
           </div>
        
