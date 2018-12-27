@@ -21,6 +21,7 @@ class BooksApp extends React.Component {
   //  TODO update shelf of book
 
     //   call booksAPI.update ; params are the book id and the shelf 
+    //   then, refresh local state by using BooksAPI.getAll
     // updateBooks() {
     //   BooksAPI.update(book, shelf)
     //   .then(book,shelf => {
