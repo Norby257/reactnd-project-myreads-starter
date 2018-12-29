@@ -7,28 +7,26 @@ class Select extends React.Component {
  
  }
 
-//   TODO: fix this - i am selecting state here but I think i need to call the props instead 
-
-// updateShelf = event => 
-// this.props.updateShelf(this.props.book, event.target.value);
-
-
 // TODO: fix error: this.updateShelf is undefined. passed as a prop but value is undefined/
-//   also props.book is undefined and with arrow function can only have inline return thats why I have errors, it looks like 
+// TODO: get the id of the book ; make sure that the selected book is not undefined 
+//   also, double check how it's referenceed in APP.js 
+
+// ok so event.target.value works, it's book that is undefined 
+
 moveBook  = event => 
 // this.props.updateShelf(this.props.book, event.target.value);
 // console.log(this.props);
-console.log(this.props.book);
+console.log(event.target.value, this.props.book);
 
 
 
   //   destructure props 
   render() {
     // const { event } = this.state
-    const{ book, books} = this.props
+    const{ book, books, updateShelf} = this.props
     console.log(this.props);
     let currentShelf = 'none';
-
+  
     return (
       <div
         className="book-shelf-changer"

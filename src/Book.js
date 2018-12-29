@@ -11,10 +11,12 @@ class Book extends React.Component {
     render() {
       //  destructure props here
      const {book, books, updateShelf} = this.props
+     console.log(this.props.book);
       //  error handling for no cover / nor no author 
       const bookCover = this.props.books.imageLinks && this.props.books.imageLinks.smallThumbnail ? this.props.books.imageLinks.smallThumbnail : noImageAvail
       //   console logging for testing and debugging purposes 
       console.log(bookCover)
+      
     
 
 
