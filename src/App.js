@@ -10,16 +10,31 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  componentDidMount() {
-    BooksAPI.getAll().then(books => {
-      this.setState(() => ({
-        books
-      }))
-    })
-  }
+  //   TODO: get all function HERE 
+    getBooks = () => {
+      BooksAPI.getAll().then(books => {
+        this.setState(() => ({
+          books
+        }))
+      })
 
-  //  TODO update shelf of book
+    }
 
+    //   update function here 
+      //  TODO update shelf of book
+    updateShelf = (updatedBook, shelf) => {
+      BooksAPI.update(updatedBook, shelf).then(res => {
+        updatedBook.shelf = shelf;
+        this.setState(prevState => ({
+          books: prevState.books
+          .filter(book => book.id !== updatedBook.id)
+          .concat(updatedBook)
+        }));
+      })
+        
+
+      
+    }
     //   call booksAPI.update ; params are the book id and the shelf 
     //   then, refresh local state by using BooksAPI.getAll
     // updateBooks() {
@@ -35,6 +50,13 @@ class BooksApp extends React.Component {
        
     //  add the applicable book
 
+  componentDidMount() {
+    //   TODO: refactored and put this is a function; can pass as prop to other components as needed 
+    this.getBooks();
+  }
+
+
+
  
   render() {
     const currentlyReading = this.state.books.filter(
@@ -49,7 +71,7 @@ class BooksApp extends React.Component {
     console.log("read", read)
     return (
       <div className="app">
-      <Route exact path='/search' exact component = {ListBooks} books={this.state.books} />
+      <Route exact path='/search' exact component = {ListBooks} books={this.state.books} updateShelf={this.updateShelf} />
       <Route exact path = '/' render={()=> (
            <div className="list-books">
            <div className="list-books-title">

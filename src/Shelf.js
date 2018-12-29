@@ -1,5 +1,8 @@
 import React from 'react';
 import Book from './Book';
+// TODO: refactor this into a class component to destructure the props 
+
+
 function Shelf(props) {
         return (
             <div className="bookshelf">
@@ -8,7 +11,7 @@ function Shelf(props) {
             <ol className="books-grid">
         {
             props.books.map(function(book){
-                return <Book books={book} key ={book.id } shelf={book.shelf} />
+                return <Book books={book} key ={book.id } shelf={book.shelf} updateShelf={props.updateShelf} />
             })
          }
         
