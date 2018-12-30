@@ -3,8 +3,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import Book from './Book';
 import * as BooksAPI  from './BooksAPI.js'
-//  API calls are working as expected, yay 
-//   just need to map over them below when they are rendered 
+
 class ListBooks extends React.Component {
  
 
@@ -28,9 +27,7 @@ state = {
 
    BooksAPI.search(query)
    .then((searchedBooks)=>{
-     //  error handling, is result set greater than 0? 
-    // careful on this so as to not introduce a bug of typeError 
-    // check that query is not empty 
+    // check that query is not empty before calling API
     // check that searchedBooks.length is greater than 0 
      if ( this.state.query !== '') {
 
@@ -51,19 +48,14 @@ state = {
     else {
       this.setState(()=> ({
         searchedBooks: [],
-        invalidQuery: true
+        invalidQuery: true,
+        query: ''
       }))
     }
-    console.log(searchedBooks)
-    console.log(this.state)
+
     
    })
  }
-
-// TODO: handle invalid search queries. i.e, queries that do not have a result 
-//   if result === 0, handle error and show error message 
-
-//  TODO: remove search results when all text is deleted out of the input field 
 
 // TODO: add a way to link back to home screen 
 
@@ -71,19 +63,10 @@ state = {
 
 
  render() {
-  //  destructure state and props
+
    const {query} = this.state
 
 console.log(query);
-
-//  filter books based on the input field 
-//    const showingBooks = query === ''
-
-//    ? this.state.searchedbooks 
-//    : this.state.searchedbooks.filter((b) => (
-//  b.title.toLowerCase().includes(query.toLowerCase())
-    
-//   ))
 
   
    return (

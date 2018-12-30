@@ -1,11 +1,8 @@
 import React from "react"
 
 class Select extends React.Component {
-  // TODO: state here
- constructor(props) {
-   super(props);
- 
- }
+  // TODO: state here else it is null value 
+
 
 // TODO: fix error: this.updateShelf is undefined. passed as a prop but value is undefined/
 // TODO: get the id of the book ; make sure that the selected book is not undefined 
@@ -16,7 +13,8 @@ class Select extends React.Component {
 moveBook  = event => 
 // this.props.updateShelf(this.props.book, event.target.value);
 // console.log(this.props);
-console.log(event.target.value, this.props.book);
+// console.log(event.target.value, this.props.book, this.props.book.id, this.props.book.shelf);
+this.props.updateShelf(this.props.book, event.target.value)
 
 
 

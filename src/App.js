@@ -19,8 +19,6 @@ class BooksApp extends React.Component {
       })
 
     }
-
-    //   update function here 
       //  TODO update shelf of book
     updateShelf = (updatedBook, shelf) => {
       BooksAPI.update(updatedBook, shelf).then(res => {
@@ -30,11 +28,14 @@ class BooksApp extends React.Component {
           .filter(book => book.id !== updatedBook.id)
           .concat(updatedBook)
         }));
+        this.getBooks();
+      
       })
         
 
       
     }
+ 
     //   call booksAPI.update ; params are the book id and the shelf 
     //   then, refresh local state by using BooksAPI.getAll
     // updateBooks() {
@@ -65,10 +66,10 @@ class BooksApp extends React.Component {
     const wantToRead = this.state.books.filter(
       book => book.shelf === "wantToRead"
     )
-    console.log(currentlyReading)
-    console.log(wantToRead)
+    // console.log(currentlyReading)
+    // console.log(wantToRead)
     const read = this.state.books.filter(book => book.shelf === "read")
-    console.log("read", read)
+    // console.log("read", read)
     return (
       <div className="app">
       <Route exact path='/search' exact component = {ListBooks} books={this.state.books} updateShelf={this.updateShelf} />

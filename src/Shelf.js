@@ -7,7 +7,7 @@ import Book from './Book';
 class Shelf extends React.Component {
     render() {
         const {book, books, updateShelf} = this.props
-        console.log(this.props)
+     
 
     
         return (
@@ -17,7 +17,7 @@ class Shelf extends React.Component {
             <ol className="books-grid">
         {
             this.props.books.map(function(book){
-                return <Book books={book} key = {book.id } shelf={book.shelf }updateShelf={updateShelf}  />
+                return <Book books={book} key = {book.id } shelf={book.shelf }updateShelf={updateShelf} book={book} />
             })
          }
         
