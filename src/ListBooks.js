@@ -15,18 +15,28 @@ state = {
 
  
 }
-
+// should updateQuery include this whole function? 
  updateQuery = (query) => {
+
    this.setState(() => ({
      query: query
+   
 
    }))
+   console.log(query)
+  
 
    BooksAPI.search(query)
    .then((searchedBooks)=>{
      //  error handling, is result set greater than 0? 
     // careful on this so as to not introduce a bug of typeError 
+    // check that query is not empty 
+    // check that searchedBooks.length is greater than 0 
+     if ( this.state.query !== '') {
+
+     
      if (searchedBooks.length > 0) {
+       
 
      
      this.setState(()=>({
@@ -36,6 +46,7 @@ state = {
        return <Book books={searchedBooks}/>
      })
     }
+  }
 
     else {
       this.setState(()=> ({
@@ -90,7 +101,6 @@ console.log(query);
           NOTES: The search from BooksAPI is limited to a particular set of search terms.
           You can find these search terms here:
           https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
           However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
           you don't find a specific author or title. Every search is limited by search terms.
         */}
@@ -114,13 +124,7 @@ console.log(query);
     </div>
   </div>
 </div>
-
    )
  }
-
 }
-
-
-
-
 export default ListBooks;
