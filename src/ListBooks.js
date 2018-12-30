@@ -15,6 +15,7 @@ state = {
  
 }
 // should updateQuery include this whole function? 
+// TODO: updating the book shelf function should work here too 
  updateQuery = (query) => {
 
    this.setState(() => ({
@@ -23,6 +24,7 @@ state = {
 
    }))
    console.log(query)
+   console.log(this.props)
   
 
    BooksAPI.search(query)
@@ -65,6 +67,8 @@ state = {
  render() {
 
    const {query} = this.state
+   const {book, books, updateShelf} = this.props
+
 
 console.log(query);
 
@@ -73,8 +77,8 @@ console.log(query);
     <div>
    
           <Link to="/"
-            className="close-search"
-          >
+            className="close-search">
+          
             Close
           </Link>
     <div className="search-books">
@@ -98,7 +102,7 @@ console.log(query);
        { this.state.searchedBooks.length > 0
 
        ?  this.state.searchedBooks.map((book)=>(
-      <Book key={book.id} books={book} className='book-list-item' />
+      <Book key={book.id} books={book} className='book-list-item'/>
     
     )) : this.state.invalidQuery ? <h2> Sorry, we could not find your book! please enter a valid title or author </h2> : <h2> Let's find a book </h2>
   }

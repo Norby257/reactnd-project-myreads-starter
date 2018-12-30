@@ -11,14 +11,10 @@ class Select extends React.Component {
 // ok so event.target.value works, it's book that is undefined 
 
 moveBook  = event => 
-// this.props.updateShelf(this.props.book, event.target.value);
-// console.log(this.props);
+
 // console.log(event.target.value, this.props.book, this.props.book.id, this.props.book.shelf);
 this.props.updateShelf(this.props.book, event.target.value)
 
-
-
-  //   destructure props 
   render() {
     // const { event } = this.state
     const{ book, books, updateShelf} = this.props
