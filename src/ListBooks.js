@@ -28,7 +28,7 @@ class ListBooks extends React.Component {
             searchedBooks
           }))
           searchedBooks.map(function(searchedbook) {
-            return <Book books={searchedBooks} />
+            return <Book books={searchedBooks}  />
           })
           console.log("STATE ", this.state)
         }

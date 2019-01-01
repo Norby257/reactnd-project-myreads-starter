@@ -1,7 +1,6 @@
 import React from 'react';
 import Book from './Book';
-// TODO: refactor this into a class component to destructure the props  {book, books, updateShelf} 
-// and then pass the values accordingly and test again 
+
 
 
 class Shelf extends React.Component {
